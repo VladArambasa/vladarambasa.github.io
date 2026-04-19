@@ -1,131 +1,476 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        * {
-            font-family: 'Courier New', Courier, monospace;
-            box-sizing: border-box;
-        }
-		:root {
-			/* NAVBAR - BACKGROUNDS */
-		--ca: #a6f2ff; /* LOCHMARA - LIGHT BLUE */
-		--cb: #007ACC; /*  */
-		--cc: #f4f4f4; /* BEIGE */
-		--cd: #bbf3fc; /* EVEN LIGHTER LOCHMARA */
-		/* NAVBAR TEXT COLOURS */
-		--ta: #333;
-		}
-        body {
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aer de Primăvară</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: row;
-            min-height: 100vh;
-        }
+    :root {
+      --verde: #5aa469;
+      --verde-inchis: #2f6f4f;
+      --roz: #f6c1d1;
+      --alb: #ffffff;
+      --crem: #f8fff8;
+      --text: #23332a;
+      --umbre: 0 8px 22px rgba(0, 0, 0, 0.12);
+    }
 
-        nav {
-            width: 180px;
-            background-color: var(--cc);
-            padding: 20px;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #eefcf0, #ffffff);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        nav img {
-            height: 75px;
-            border-radius: 65%;
-        }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        nav h2, nav h3 {
-            margin: 10px 0;
-        }
+    header {
+      background: linear-gradient(135deg, #79c98c, #4d9f66);
+      color: white;
+      box-shadow: var(--umbre);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
+    .header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
 
-        nav ul li {
-            margin-bottom: 10px;
-        }
+    .logo h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-        }
+    .logo p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
 
-        main {
-            padding: 20px;
-            flex-grow: 1;
-        }
+    nav {
+      margin-left: auto;
+    }
 
-        /* ✅ Responsive layout for screens smaller than 768px */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 22px;
+      justify-content: flex-end;
+      align-items: center;
+    }
 
-            nav {
-                width: 100%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
 
-            nav ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 0;
-                margin: 10px 0;
-            }
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+    }
 
-            nav ul li {
-                margin: 5px 10px;
-            }
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
 
-            main {
-                padding: 15px;
-            }
-        }
-    </style>
+    .hero {
+      min-height: 82vh;
+      background:
+        linear-gradient(rgba(38, 89, 58, 0.35), rgba(38, 89, 58, 0.35)),
+        url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 680px;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 34px;
+      border-radius: 18px;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--roz);
+      color: #5f2440;
+      padding: 12px 22px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 999px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #ffd3df;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--verde-inchis);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .about-grid,
+    .cards,
+    .gallery {
+      display: grid;
+      gap: 25px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+    }
+
+    .about-text {
+      background: var(--alb);
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: var(--umbre);
+    }
+
+    .about-text p {
+      margin-bottom: 14px;
+    }
+
+    .about-image img,
+    .card img,
+    .gallery img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+    }
+
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--umbre);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      color: var(--verde-inchis);
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery img {
+      height: 260px;
+      object-fit: cover;
+      box-shadow: var(--umbre);
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #dff7e4, #fdf0f5);
+      text-align: center;
+      border-radius: 20px;
+      padding: 45px 30px;
+      box-shadow: var(--umbre);
+    }
+
+    .quote p {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--verde-inchis);
+    }
+
+    .contact-box {
+      background: white;
+      max-width: 760px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: var(--umbre);
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 10px 0;
+    }
+
+    footer {
+      background: var(--verde-inchis);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 20px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .cards,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-wrap {
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      nav {
+        width: 100%;
+        display: none;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-end;
+        padding-top: 10px;
+        gap: 10px;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero-content {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-    <nav>
-		<img src="pictures/face.jpg" alt="Profile Image" style="height: 75px; border-radius: 65%;">
-        <h2>VLAD ARAMBAȘA</h2>
-        <h3>Main Page</h3>
-		<h3 style="text-decoration: underline;">Pages</h3>
+  <header>
+    <div class="container header-wrap">
+      <div class="logo">
+        <h1>Aer de Primăvară</h1>
+        <p>Frumusețea Timișoarei în cel mai viu anotimp</p>
+      </div>
 
+      <button class="menu-toggle" id="menu-toggle">☰</button>
+
+      <nav id="nav-menu">
         <ul>
-            <li><a href="about/about-main.html">About</a></li>
-            <li><a href="services/services-main.html">Services</a></li>
-            <li><a href="contact/contact-main.html">Contact</a></li>
-            <li><a href="teaching/teaching-main.html">Teaching</a></li>
+          <li><a href="#acasa">Acasă</a></li>
+          <li><a href="#despre">Despre</a></li>
+          <li><a href="#locuri">Locuri</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
-    <main>
-	<h1>Mae Govannen!</h1>
-		<p>Im erin lend en edhil. Vi i thŷr dhúath tol acharn en anann. Gwenniel i galad a vellyn sui ithil din thinniel, a naid bain laer nan aglar o imlad ennas.</p>
-	<h2>Minas Ennorath</h2>
-		<p>I fen nor anann sui galadhremmin ennorath. Ned mithril tol in eryn, a giliath edhellen linnatha vellyn i nimrais dîn a lim o calad galen.</p>
-	<h3>Estel en Taur</h3>
-		<p>Celebren i vellas naur dan in eryn vi i dúath úgarth. Edraith en emel naur a nin gwerian tol erin lend elvellon. Linnon ammen na i lais dîn ned erain sui ithil a galadh.</p>
-	<h3>Gilgalad a Mellonath</h3>
-		<p>Gilgalad broniant ennas ned mith hwest sui naur. Ned i dhúath palan-diriel gwilwileth din ned ennas. I naur en alfirin laer abonnen a naid celeblin sui i lûth erain.</p>
-	<h2>Dagor o Annon</h2>
-		<p>Dan annon veleth tol idhren sui thalion. Ned taur ah amarth din lend ah annon vi elin edhil. Galadh a gilith reniar sui lain ned dúath bain.</p>
-	<h3>Lothren vi Annûn</h3>
-		<p>Naid bain ir laegel sui vellyn en mellonath. Estel en ernil edhel renia ned annon i galad dîn. Vi i laer ennas thilia thalion bain, ned i lúth sui anann.</p>
-    </main>
+      </nav>
     </div>
+  </header>
+
+  <section class="hero" id="acasa">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Primăvara aduce culoare, lumină și energie</h2>
+        <p>
+          Timișoara prinde viață în fiecare primăvară. Parcurile se umplu de verdeață,
+          florile colorează orașul, iar plimbările pe malul Begăi devin mai frumoase ca oricând.
+        </p>
+        <a class="btn" href="#despre">Descoperă mai mult</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="despre">
+    <div class="container">
+      <div class="section-title">
+        <h2>Despre primăvara în Timișoara</h2>
+        <p>
+          Primăvara transformă orașul într-un spațiu plin de prospețime, relaxare și culoare.
+          Este anotimpul ideal pentru plimbări, fotografii și momente petrecute în aer liber.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            În acest sezon, Timișoara devine mai caldă, mai luminoasă și mai prietenoasă.
+            Oamenii ies mai mult în parc, terasele se animă, iar natura oferă un decor deosebit.
+          </p>
+          <p>
+            Parcul Rozelor, malurile Begăi și centrul orașului sunt locuri unde primăvara se simte cel mai bine.
+            Copacii înfloriți și aerul curat creează o atmosferă plăcută și liniștitoare.
+          </p>
+          <p>
+            Tema acestui site evidențiază frumusețea anotimpului de primăvară și legătura dintre natură și oraș.
+          </p>
+        </div>
+
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=80" alt="Flori de primăvară" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="locuri" style="background-color:#f3fbf4;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Locuri care merită admirate</h2>
+        <p>Câteva spații care surprind foarte bine atmosfera de primăvară.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80" alt="Parc cu flori" />
+          <div class="card-content">
+            <h3>Parcuri pline de culoare</h3>
+            <p>
+              Primăvara, parcurile devin locuri ideale pentru relaxare. Verdele crud și florile creează o atmosferă veselă.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Apă și natură" />
+          <div class="card-content">
+            <h3>Plimbări pe malul apei</h3>
+            <p>
+              O plimbare liniștită în apropierea apei este una dintre cele mai plăcute activități de primăvară.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?auto=format&fit=crop&w=1200&q=80" alt="Oraș primăvara" />
+          <div class="card-content">
+            <h3>Orașul în lumină caldă</h3>
+            <p>
+              Clădirile, piețele și străzile capătă un farmec special atunci când sunt înconjurate de lumină și flori.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galerie">
+    <div class="container">
+      <div class="section-title">
+        <h2>Galerie de primăvară</h2>
+        <p>Imagini sugestive pentru un anotimp plin de viață.</p>
+      </div>
+
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?auto=format&fit=crop&w=1000&q=80" alt="Copaci înfloriți" />
+        <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=1000&q=80" alt="Câmp cu flori" />
+        <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=1000&q=80" alt="Primăvară urbană" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="quote">
+        <p>„Primăvara este felul naturii de a spune că totul poate începe din nou.”</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Exemplu simplu de secțiune finală pentru proiectul de atestat.</p>
+      </div>
+
+      <div class="contact-box">
+        <p><strong>Nume proiect:</strong> Aer de Primăvară</p>
+        <p><strong>Realizat pentru:</strong> Atestat Informatică</p>
+        <p><strong>Temă:</strong> Primăvara în Timișoara</p>
+        <p><strong>Email:</strong> exemplu@email.com</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Aer de Primăvară | Proiect realizat în HTML, CSS și JavaScript</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
-
